@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Document</title>
+    <style>
+        body {
+            background-color: #F9F9F9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .form-container {
+            background-color: #ac2372;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(53, 51, 51, 0.1);
+            padding: 2rem;
+            width: 50%;
+            max-width: 1000px;
+        }
+
+        h2 {
+            color: #fff;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        label {
+            font-weight: 500;
+            color: #495057;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #80bdff;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.15s ease-in-out;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .custom-file-input {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .custom-file-input input[type="file"] {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+        }
+
+        .custom-file-label {
+            display: inline-block;
+            background: #007bff;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .custom-file-input:hover .custom-file-label {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Upload Documents</h2>
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <label for="client_id">Client Name</label>
+            <input type="text" id="client_id" name="client_id" placeholder="Enter the name of the client">
+            
+            <label for="loan_id">Loan ID</label>
+            <input type="text" id="loan_id" name="loan_id" placeholder="Enter the loand ID">
+            
+            <label for="doc_type">Document Type</label>
+            <select id="doc_type" name="doc_type">
+                <option value="Collateral_Doc">Collateral Document</option>
+                <option value="Loan_Doc">Loan Document</option>
+            </select>
+
+            <label for="title">Document Title</label>
+            <input type="text" id="title" name="title" placeholder="Enter Document Title" required>
+
+            <label for="description">Description</label>
+            <textarea id="description" name="description" rows="10" placeholder="Enter a brief description" required></textarea>
+
+            <label for="file">Upload Files</label>
+            <div class="custom-file-input">
+                <input type="file" id="file" name="file" multiple required>
+                <span class="custom-file-label">Choose Files</span>
+            </div>
+            <div><button type="submit" class="btn-primary">Upload</button></div>      
+        </form>
+    </div>
+</body>
+</html>
